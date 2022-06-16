@@ -81,6 +81,8 @@ class Cursor:
         ------
         https://github.com/mkleehammer/pyodbc/wiki/Cursor#close
         """
+        if self._df is not None:
+            self._df.sql_ctx.sparkSession.stop()
         self._df = None
         self._rows = None
 
